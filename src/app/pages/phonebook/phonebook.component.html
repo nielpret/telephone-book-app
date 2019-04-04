@@ -1,0 +1,39 @@
+<a [routerLink]="['/']">Home</a>
+<h2>{{phoneBookData.name}}</h2>
+<div class="row">
+  <div class="col-4">
+    <div class="form-group">
+      <label for="searchName">Search Name</label>
+      <input id="searchName" type="text" class="form-control" [(ngModel)]="searchName" />
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="form-group">
+      <label for="searchNumber">Search Number</label>
+      <input id="searchNumber" type="text" class="form-control" [(ngModel)]="searchNumber" />
+    </div>
+  </div>
+</div>
+<div class="row">
+<table class="table table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Phone Number</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input id="searchNumber" type="text" class="form-control" [(ngModel)]="newEntry.name" placeholder="Name"/></td>
+      <td><input id="searchNumber" type="text" class="form-control" [(ngModel)]="newEntry.phoneNumber" placeholder="Phone Number"/></td>
+      <td><button class="btn btn-primary" (click)="addNew()">Add New</button></td>
+    </tr>
+    <tr *ngFor="let entry of phoneBookEntryFilter()">
+      <td>{{entry.name}}</td>
+      <td>{{entry.phoneNumber}}</td>
+      <td><button class="btn btn-danger" (click)="remove(entry.id)">Remove</button></td>
+    </tr>
+  </tbody>
+</table>
+</div>
