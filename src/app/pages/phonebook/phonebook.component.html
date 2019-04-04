@@ -1,39 +1,40 @@
 <a [routerLink]="['/']">Home</a>
 <h2>{{phoneBookData.name}}</h2>
-<div class="row">
-  <div class="col-4">
-    <div class="form-group">
-      <label for="searchName">Search Name</label>
-      <input id="searchName" type="text" class="form-control" [(ngModel)]="searchName" />
+<div class="card mb-2">
+  <div class="card-body">
+    <h4>Create new</h4>
+    <div class="form-group col-6">
+      <input id="name" type="text" class="form-control" [(ngModel)]="newEntry.name" placeholder="Name" />
     </div>
-  </div>
-  <div class="col-4">
-    <div class="form-group">
-      <label for="searchNumber">Search Number</label>
-      <input id="searchNumber" type="text" class="form-control" [(ngModel)]="searchNumber" />
+    <div class="form-group col-6">
+      <input id="number" type="text" class="form-control" [(ngModel)]="newEntry.phoneNumber" placeholder="Phone Number" />
     </div>
+    <button class="btn btn-primary" (click)="addNew()">Add New</button>
   </div>
 </div>
+
 <div class="row">
-<table class="table table-bordered">
-  <thead class="table-dark">
-    <tr>
-      <th>Name</th>
-      <th>Phone Number</th>
-      <th>&nbsp;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><input id="searchNumber" type="text" class="form-control" [(ngModel)]="newEntry.name" placeholder="Name"/></td>
-      <td><input id="searchNumber" type="text" class="form-control" [(ngModel)]="newEntry.phoneNumber" placeholder="Phone Number"/></td>
-      <td><button class="btn btn-primary" (click)="addNew()">Add New</button></td>
-    </tr>
-    <tr *ngFor="let entry of phoneBookEntryFilter()">
-      <td>{{entry.name}}</td>
-      <td>{{entry.phoneNumber}}</td>
-      <td><button class="btn btn-danger" (click)="remove(entry.id)">Remove</button></td>
-    </tr>
-  </tbody>
-</table>
+  <div class="col">
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Name</th>
+          <th>Phone Number</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input id="searchName" type="text" class="form-control" [(ngModel)]="searchName" placeholder="search name" /></td>
+          <td><input id="searchNumber" type="text" class="form-control" [(ngModel)]="searchNumber" placeholder="search number" /></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr *ngFor="let entry of phoneBookEntryFilter()">
+          <td>{{entry.name}}</td>
+          <td>{{entry.phoneNumber}}</td>
+          <td><button class="btn btn-danger" (click)="remove(entry.id)">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
